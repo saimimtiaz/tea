@@ -1,0 +1,81 @@
+[19-Jul-2018 06:27:55 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php:10
+Stack trace:
+#0 /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php(3): include()
+#1 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php on line 10
+[19-Jul-2018 06:27:55 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php:10
+Stack trace:
+#0 /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php(3): include()
+#1 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php on line 10
+[19-Jul-2018 06:49:41 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php on line 10
+[19-Jul-2018 13:33:57 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 21
+[19-Jul-2018 13:33:57 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 21
+[19-Jul-2018 13:34:06 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 21
+[19-Jul-2018 13:34:06 CST6CDT] PHP Parse error:  syntax error, unexpected ')' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 21
+[19-Jul-2018 13:34:37 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php on line 15
+[19-Jul-2018 13:35:07 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php on line 15
+[19-Jul-2018 13:38:58 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:39:23 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:43:13 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:44:14 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:51:21 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:52:23 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 13:55:28 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 14:14:35 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 14:15:29 CST6CDT] PHP Catchable fatal error:  Object of class mysqli could not be converted to string in /home/vapenati/public_html/venturedrive.pk/tea/ajax/db_connection.php on line 12
+[19-Jul-2018 14:15:59 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 20
+[19-Jul-2018 14:52:37 CST6CDT] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php on line 39
+[19-Jul-2018 14:54:55 CST6CDT] PHP Parse error:  syntax error, unexpected '"<br>"' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/addRecord.php on line 33
+[19-Jul-2018 15:25:21 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_query() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php on line 13
+[19-Jul-2018 15:25:26 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_query() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php on line 13
+[19-Jul-2018 15:25:31 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_query() in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vapenati/public_html/venturedrive.pk/tea/ajax/deleteUser.php on line 13
+[25-Jul-2018 10:00:55 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 8
+[25-Jul-2018 10:00:55 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 8
+[25-Jul-2018 10:02:11 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 8
+[25-Jul-2018 10:02:11 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/vapenati/public_html/venturedrive.pk/tea/ajax/readRecords.php on line 8

