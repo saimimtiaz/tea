@@ -476,7 +476,7 @@ if(date('j', time()) === '27') {
         <div class="col-md-12"> 
             <center><a href="cards.php?name=<?php echo $name; ?>&mac=<?php echo $mac; ?>"> <img width="50" src='tea-cup.png' /></a></center>
             <center>
-                <h6>V 5.00(Johar Town)</h6></center>
+                <h6>V 6.00(Johar Town)</h6></center>
             <span id="notice" style="display:none;"><?php echo $notice_name; ?></span>
             <center>
                 <h4>Next serving at <span style="font-weight: bolder;color: #e68134;" class="serving"><?php echo $serving_time; ?></span></h4></center>

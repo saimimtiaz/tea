@@ -114,7 +114,7 @@ $s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND servi
 //		die;
 		if($result->num_rows > 0 && $payment_type =='free' && $status == 0)
 		{
-		echo"<span class='error'> You already Delivered (<small>$id</small>) at <b>$date-$last_order_serving_time<b> so please wait for next Delivery time to order </span>";
+		echo"<span class='error'> You already Delivered (<small>$id</small>)  <b>$last_order_serving_time<b> order.</span>";
 		die;
 		}
 		

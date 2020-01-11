@@ -8,7 +8,8 @@ date_default_timezone_set("Asia/Karachi");
 //echo time();
 
 $current_hour = date('H', time());
-
+//echo $current_hour;
+//die;
 
 foreach ($serving as $t)
 {
@@ -22,11 +23,12 @@ foreach ($serving as $t)
 	
 	$res = $serving[0];
 	}
+	//echo $res;
 	
 	
 }
 
-//echo $res;
+
 //echo"<br>"; 
 $serving_time = date('h:i A', strtotime("$res:00:00")); 
 echo date('h:i A', strtotime("$res:00:00"));
