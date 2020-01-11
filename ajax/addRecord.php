@@ -1,13 +1,10 @@
 <?php
 
-if ("POST" == $_SERVER["REQUEST_METHOD"]) {
-    if (isset($_SERVER["HTTP_ORIGIN"])) {
-        $address = "http://".$_SERVER["SERVER_NAME"];
-        if (strpos($address, $_SERVER["HTTP_ORIGIN"]) !== 0) {
-            exit("CSRF protection in POST request: detected invalid Origin header: ".$_SERVER["HTTP_ORIGIN"]);
-        }
-    }
-}
+
+//echo $_SERVER["HTTP_ORIGIN"];
+//echo"<hr>";
+
+
 
 
 	if(isset($_POST['name']))
@@ -27,7 +24,7 @@ if ("POST" == $_SERVER["REQUEST_METHOD"]) {
 		//date('h:i:s a m/d/Y', strtotime(date('Y-m-d H:i:s')));
 		// get values 
 		$name = $_POST['name'];
-																$time = $_POST['time'];
+		$time = $_POST['time'];
 		$mac = $_POST['mac'];
 		$qt = $_POST['qt'];
 		$item = $_POST['item'];
@@ -74,11 +71,17 @@ if ("POST" == $_SERVER["REQUEST_METHOD"]) {
 		}
 		
 				
-//-----------------if User have undelivered orders
-		
-		$s = "SELECT * FROM tea_orders WHERE user = '$name' AND serving_time != '$time' AND status ='1' AND payment_type = 'free'";
+//-----------------if User have undelivered orders of previous date not today
+		//echo $date;
+		//echo"<br>";
+		$s = "SELECT * FROM tea_orders WHERE user = '$name' AND status ='1' AND payment_type = 'free'";
 		$result = $conn->query(($s));
-		if($result->num_rows > 0){
+		//echo"<pre>";
+		$undelivered_tea_order = $result->fetch_assoc();
+		 
+		//echo"<hr>";
+		//print_r($result->fetch_assoc());
+		if($result->num_rows > 0 && $undelivered_tea_order["date"] != $date){
 				$orders= $result->num_rows;
 				echo"<span class='error'>You have $orders Undelivered Order Please mark that deliver first</span>";
 				die;
@@ -88,8 +91,8 @@ if ("POST" == $_SERVER["REQUEST_METHOD"]) {
 		
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 		
-$s = "SELECT * FROM tea_orders WHERE user = '$name'  AND date = '$date' ORDER BY id DESC LIMIT 1";
-		
+$s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND serving_time  ='$time' ";
+
 		require('stockcheck.php');
 		stock_check($conn,$item);
 		
@@ -97,21 +100,21 @@ $s = "SELECT * FROM tea_orders WHERE user = '$name'  AND date = '$date' ORDER BY
 		
 		$result = $conn->query(($s));
 		$last_order = $result->fetch_assoc();
-		//echo $s;
-		//echo"<pre>";
-		//print_r($last_order);
-		//die;
+		
 		$type =  $last_order['payment_type'];
 		$last_order_serving_time =  $last_order['serving_time'];
 		$last_order_date =  $last_order['date'];
 		$id =  $last_order['id'];
 		$status =  $last_order['status'];
-//--------------------------------------One order in one serving time-----------------------------
+
+//		echo $status;
+//		die;
+		//--------------------------------------One order in one serving time (order alredy deliverd at that time)-----------------------------
 //		echo "$date == $last_order_date &&  $time == $last_order_serving_time && $payment_type =='free'";
 //		die;
-		if( $date == $last_order_date &&  $time == $last_order_serving_time && $payment_type =='free' && $status == '0')
+		if($result->num_rows > 0 && $payment_type =='free' && $status == 0)
 		{
-		echo"<span class='error'> You already ordered (<small>$id</small>) at <b>$last_order_serving_time<b> so please wait for next Delivery time to order </span>";
+		echo"<span class='error'> You already Delivered (<small>$id</small>) at <b>$date-$last_order_serving_time<b> so please wait for next Delivery time to order </span>";
 		die;
 		}
 		
@@ -121,27 +124,27 @@ $s = "SELECT * FROM tea_orders WHERE user = '$name'  AND date = '$date' ORDER BY
 //		echo"<pre>";
 //		print_r($result->fetch_assoc());
 		
-		
-		
-		
 		// If Free item order already exist them UPDATE that order instead of creating new order
-			if( $result->num_rows > 0 && $payment_type =='free' && $status == '1'){
-					
+	
+			if( $result->num_rows > 0 && $payment_type =='free' && $status == 1) {
 				
 				//$last_serving_time =  $last_order['serving_time'];
 				
 				
 				//echo "Last Serving $last_serving_time| current time $time"; echo"<pre>";
-				
-		
-				
-				$sql = "UPDATE tea_orders SET item_id='$item', sugar='$sugar'  WHERE id='$id'";
+					
+				$sql = "UPDATE tea_orders SET item_id='$item', sugar='$sugar'  WHERE date='$date' && serving_time = '$time' && user='$name' ";
+	
+	//echo $sql;
 				if($conn->query($sql) === TRUE) { 
-				echo"<span class='successs'> Order updated successfully</span>";
+				echo"<span class='successs'>$last_order_serving_time Order updated successfully</span>";
 				}else{
 				echo "Error:  <br>" . $conn->error;
 				}
 		}else{
+	
+	echo "order Added";
+	
 		//--------------------- otherwise just insert the order and - Minus the Stock
 				$stock = stock_check($conn,$item,true);
 				$updated_stock = $stock-$qt;

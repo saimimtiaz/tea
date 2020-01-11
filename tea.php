@@ -75,20 +75,23 @@ $(document).ready(function () {
 <body style="background-color:#fefefe;padding:20px;">
     <style>
     .message{
-    font-weight: 200;
-
-    line-height: 34px;
+    font-weight: 500;
+    line-height: 54px;
     text-align: center;
     margin-bottom: 13px;
     border-radius: 4px;
-    /* font-weight: bolder; */
     letter-spacing: 2px;
-    background-color: #4c8b96;
-    color: white;
+    color: #000000;
+    text-transform: capitalize;
+    background-color: #fff337;
 
     }
     .body{
     font-weight: 200;
+    }
+    #feedback{
+     background-color: fff337;
+        color: black;
     }
     
 .flash-button{
@@ -279,13 +282,13 @@ cursor: not-allowed;
 }
 .balance{
     padding: 10px;
-    position: relative;
     font-size: 19px !important;
     background-color: 33c5b9;
     color: #ffffff;
     width: 129px;
     text-align: center;
-    top:23px;
+    position: relative;
+    top: 95px;
 /*    text-shadow: 1px 1px 2px grey;*/
 }
 /*hide the items when the select box is closed:*/
@@ -351,15 +354,15 @@ cursor: not-allowed;
     color: #fff8f8;
     font-weight: 400;
     padding: 11px;
-    border-radius: 3px;
-    margin-top: 25px;
     border: 0px;
-    background-color: #145454;    
-     
-        }
-        .hidden{
-        dispaly:none;
-        }
+    background-color: #242727;
+    position: relative;
+    width: 100%;
+ 
+    }
+    .hidden{
+    dispaly:none;
+    }
         
     label{
         
@@ -367,18 +370,16 @@ cursor: not-allowed;
      font-weight: normal !important;    
         }
         .teel{
-            background-color:  #206b53e8 !important;
+            background-color:  #37f2b9 !important;
         }
         .question{
         transition: transform .2s;
+       
+        padding: 13px;
+        
    
         }
-        .question:hover{
-        transform: scale(1.1);
-        background-color:#37494ce8;
-        padding:20px;
-        border-radius:20px;
-        }
+       
         
     </style>
 <div class="container">
@@ -432,7 +433,7 @@ if(date('j', time()) === '27') {
           <input id="refid" type="hidden" value="">
         <div class="question">
           <h1>How was your tea ?</h1>
-        <hr>
+        
                   <label>  <input required type="radio"  name="feedback" value="1">  It was pathetic  </label><br>
                     <label>  <input required type="radio" name="feedback" value="2"> I did't like it </label><br>
                    <label>  <input  required type="radio" name="feedback"  value="3"> It was ok </label><br>
@@ -441,7 +442,7 @@ if(date('j', time()) === '27') {
         </div>
           <div class="question">
           <h1> How was the Internet ?</h1>
-        <hr>
+    
           <label>  <input required type="radio"  name="internet" value="1"> Zero </label><br>
           <label>  <input required type="radio"  name="internet" value="2"> Poor Speed </label><br>
           <label>  <input required type="radio"  name="internet" value="3"> I can't do my work </label><br>
@@ -519,8 +520,18 @@ if(date('j', time()) === '27') {
                     <option value="1">1 </option>
                     <option selected value="2">2</option>
                     <option value="3">3</option>
-        </select>     
-     </div> 
+        </select>    
+          
+     </div>
+            <lable> Order Time </lable>
+            <div class="custom-select2" style="width:200px;"> 
+                  <select  style="" name="s_time" id="s_time"> 
+<option <?php if ($serving_time =='11:00 AM'){echo 'selected';}  ?> value="11:00 AM">11:00 AM</option>
+<option <?php if ($serving_time =='2:00 PM'){echo 'selected';}  ?> value="2:00 PM">2:00 PM </option>
+<option  <?php  if ($serving_time =='5:00 PM'){echo 'selected';}  ?> value="5:00 PM">5:00 PM</option>
+<option <?php if ($serving_time =='8:00 PM'){echo 'selected';}  ?> value="8:00 PM">8:00 PM</option>
+                </select>  
+            </div>    
                 </div>    
                <hr>
                 
@@ -626,8 +637,8 @@ if(date('j', time()) === '27') {
         
       
     })
-  // overlay section
- //   document.addEventListener('contextmenu', event => event.preventDefault());
+ //  overlay section
+    //document.addEventListener('contextmenu', event => event.preventDefault());
 
         
     //-------------------Sugar prefrence 
@@ -754,16 +765,18 @@ if(date('j', time()) === '27') {
 
     function addRecord() {
         //if (window.self != window.top){
+        
         var mac = $("#mac").text();
         var qt = $("#qt").val();
         var sugar = $("#sugar").val();
         //    var email = $("#email").val();
         var item = $('input[name=item]:checked').val();
-        console.log(item);
+        
+        //console.log(item);
 
         var name = $("#name").text();
-        var s_time = $("#time").text();
-
+        //var s_time = $("#time").text();
+        var s_time = $('#s_time').val();
 
 if(mac !='' && name!=''){
         // Add record
