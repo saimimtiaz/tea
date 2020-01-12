@@ -71,8 +71,9 @@ $(document).ready(function () {
     
 </script>
     <script src="js/jquery.cookie.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">    
 </head>
-<body style="background-color:#fefefe;padding:20px;">
+<body style="background-color:#fefefe;padding:20px;font-family: 'Roboto', sans-serif;">
     <style>
     .message{
     font-weight: 500;
@@ -86,6 +87,14 @@ $(document).ready(function () {
     background-color: #fff337;
 
     }
+      .lable  {
+        padding: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #090a0a;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+        }
     .body{
     font-weight: 200;
     }
@@ -117,6 +126,10 @@ $(document).ready(function () {
 	-moz-animation-duration: 1s;
 	-moz-animation-timing-function: linear;
 	-moz-animation-iteration-count: infinite;
+    position:relative;
+    right: 272px;
+    top: 76px;
+    
 }
 
 @keyframes flash {  
@@ -237,7 +250,7 @@ cursor: not-allowed;
     /*---------------*/
     .custom-select {
   position: relative;
-  font-family: Arial;
+  
 }
 .custom-select select {
   display: none; /*hide original SELECT element:*/
@@ -374,7 +387,7 @@ cursor: not-allowed;
         }
         .question{
         transition: transform .2s;
-       
+           font-family: 'Roboto', sans-serif;
         padding: 13px;
         
    
@@ -401,7 +414,9 @@ cursor: not-allowed;
 <div class="container">
     <div class="row">
   <?php
-if(date('j', time()) === '27') { 
+
+if(date('j', time()) > '27') {
+    
 ?>
         <center><a type="button" class="flash-button" href='https://docs.google.com/forms/d/e/1FAIpQLSe8ymaP_KOut0Cw4FnImKpjuSyiochmA_a60tosUWzIyt6LqA/viewform?usp=sf_link' target="_top"><?php if (isset ($_GET["name"])){echo ucfirst ($_GET["name"]);} ?> we need your Feedback!</a></center>
         
@@ -444,11 +459,12 @@ if(date('j', time()) === '27') {
     //print_r ($items);
     ?>
     <div class="feedback overlay2 teel hidden">
-    <div style="margin: 0 auto;width: 500px;">  
+    <div style="margin: 0 auto;width: 500px;padding:10px">  
       <form id="feedback">
           <input id="refid" type="hidden" value="">
+          <p class="lable">Please Be honest with your feedback, this data will really help to improve our services.</p>
         <div class="question">
-          <h1>How was your tea ?</h1>
+          <h2>How was your tea ?</h2>
         
                   <label>  <input required type="radio"  name="feedback" value="1">  It was pathetic  </label><br>
                     <label>  <input required type="radio" name="feedback" value="2"> I did't like it </label><br>
@@ -457,7 +473,7 @@ if(date('j', time()) === '27') {
                     <label>  <input required type="radio" name="feedback" value="5"> It was Excellent</label><br>
         </div>
           <div class="question">
-          <h1> How was the Internet ?</h1>
+          <h2> How was the Internet ?</h2>
     
           <label>  <input required type="radio"  name="internet" value="1"> Zero </label><br>
           <label>  <input required type="radio"  name="internet" value="2"> Poor Speed </label><br>
@@ -539,13 +555,15 @@ if(date('j', time()) === '27') {
         </select>    
           
      </div>
-            <lable> Select Order Time </lable>
+
+
+            
+            <lable> Select serving time </lable>
             <div class="custom-select2" style="width:200px;"> 
                   <select id='mySelect'  style="" name="s_time" id="s_time"> 
-<option <?php if ($serving_time =='11:00 AM'){echo 'selected';}  ?> value="11:00 AM">11:00 AM</option>
-<option <?php if ($serving_time =='2:00 PM'){echo 'selected';}  ?> value="2:00 PM">2:00 PM </option>
-<option  <?php  if ($serving_time =='5:00 PM'){echo 'selected';}  ?> value="5:00 PM">5:00 PM</option>
-<option <?php if ($serving_time =='8:00 PM'){echo 'selected';}  ?> value="8:00 PM">8:00 PM</option>
+<?php if (strtotime("11:00 AM")>time()){ echo"<option value='11:00 AM' >11:00 AM</option> "; } ?>     <?php if (strtotime("2:00 PM")>time()){ echo"<option value='2:00 PM' >2:00 PM</option> "; } ?>          
+<?php if (strtotime("5:00 PM")>time()){ echo"<option value='5:00 PM' >5:00 PM</option> "; } ?>     
+<?php if (strtotime("8:00 PM")>time()){ echo"<option value='8:00 PM' >8:00 PM</option> "; } ?>               
                 </select>  
             </div>    
                 </div>    
@@ -908,4 +926,5 @@ document.addEventListener("click", closeAllSelect);
 $(function() {
   $(".cross").delay(6000).fadeIn();
 });        
-</script>       
+</script> 
+            

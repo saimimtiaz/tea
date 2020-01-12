@@ -61,6 +61,15 @@
 		}
 		
 //----------------------------Blacklisted Macs		
+//----------------------------	
+		if (strtotime($time)>time()){
+		echo "Serving Time is invalid";
+			die;
+		
+		}
+		
+		
+//----------------------------		
 		
 		$black_listed = array("B4:0F:B3:4C:ED:33", "00:E0:25:2D:9E:C3", "B4:0F:B3:4C:ED:33", "Cleveland");
 		
