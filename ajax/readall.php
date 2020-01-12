@@ -39,8 +39,10 @@ if (isset($_GET['dev'])) {
 date_default_timezone_set('Asia/Karachi');
 $date = date('d/m/Y');
 $status = 1;
+$user = 0;
 $time = $serving_time;
 echo $dev;
+if(isset($_GET['user'])){  $user =  mysqli_real_escape_string($conn,$_GET['user']);}
 if(isset($_GET['date'])){ $date =  mysqli_real_escape_string($conn,$_GET['date']);}
 if(isset($_GET['status'])){ $status = mysqli_real_escape_string($conn,$_GET['status']);}
 if(isset($_GET['time'])){ $time = mysqli_real_escape_string($conn,$_GET['time']);}
@@ -112,26 +114,39 @@ echo "<div class='rating'> Tea rating is <b> " . $row["AVG(rating)"]."
 
 $s = "SELECT * FROM tea_orders WHERE date = '$date' AND serving_time = '$time' AND status ='1' ORDER BY id DESC";
 
+
+
 //----------------------------------------------------------------------------------
 
 
-
+$rating = false;
 
 if (isset($_GET['rating'])) {
 $rating = true;
 
 }
+
+if ($report){
+$s = $today;
+}
+//----------------------------------Orders for a users -----------------------------------------------
+    if ($user != ''){
+        
+        
+    //    $s = "SELECT *  FROM `tea_orders` WHERE `user` = \'saim\' ORDER BY `serving_time` ASC";
+    $s = "SELECT * FROM tea_orders WHERE  user = '$user' ORDER BY id DESC";
+        echo "<h4>All Orders of $user</h4>";
+    }
+//---------------------------------
+
 if (isset($_GET['dev'])) {
-    echo $s;
+    echo"<code> $s</code>";
     echo"<br>";
     $result = $conn->query($s);
     echo  $rowcount = mysqli_num_rows($result);
 }
-if ($report){
-$s = $today;
-}
 
-echo "<hr><span class='query' style='color:white'>".$s;"</span></hr>";
+//echo "<hr><span class='query' style='color:white'>".$s;"</span></hr>";
     $result = $conn->query($s);
 //    if ($dev) {
 //        echo "<hr>";
@@ -143,6 +158,8 @@ echo "<hr><span class='query' style='color:white'>".$s;"</span></hr>";
 //        echo "</pre>";
 //        
 //    }
+
+
  echo ' <a href="readall.php" class="btn btn-large " style="    float: left;" type="button">Number of Orders<h5 style="font-size:35px"> '.$result->num_rows.'</h5></a>'; 
 
 echo ' <a href="?date='.$date.'&report" class="btn btn-large " style=" float: right;" type="button">Total Number of Orders <h5 style="font-size:35px">  '.$today_results->num_rows.'</h5></a>'; 
@@ -155,6 +172,7 @@ echo '   <span style="background-color: #FFEB3B;color: #6d6b6b;padding: 10px;"> 
   
     </div>
     <?php
+    
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $user =  $row['user'];
@@ -179,7 +197,9 @@ echo '   <span style="background-color: #FFEB3B;color: #6d6b6b;padding: 10px;"> 
             
             
             $data .= "<tr style='font-weight:900;font-size:20px'>
-                <td ><button type='button' class='btn btn-primary btn-lg'>$user <span class='badge'> $serving_time</span></button></td>
+                <td ><a href='readall.php?user=".$user."' type='button' class='btn btn-primary btn-lg'>$user <span class='badge'> $serving_time</span></a>
+          <br> <small><a href='whatsapp.php?user=".$user."'><img width='24px' src='../img/whatsapp.png'/></a></small>
+                </td>
                 <td>$sugar Spoons</td>
                 <td >$order_time</td>
                 <td><small>$item</small></td>
