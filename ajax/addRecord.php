@@ -62,7 +62,7 @@
 		
 //----------------------------Blacklisted Macs		
 //----------------------------	
-		if (strtotime($time)>time()){
+		if (strtotime($time)<time()){
 		echo "Serving Time is invalid";
 			die;
 		
@@ -83,7 +83,7 @@
 //-----------------if User have undelivered orders of previous date not today
 		//echo $date;
 		//echo"<br>";
-		$s = "SELECT * FROM tea_orders WHERE user = '$name' AND status ='1' AND payment_type = 'free'";
+		$s = "SELECT * FROM tea_orders WHERE mac = '$mac' AND status ='1' AND payment_type = 'free'";
 		$result = $conn->query(($s));
 		//echo"<pre>";
 		$undelivered_tea_order = $result->fetch_assoc();
@@ -152,7 +152,7 @@ $s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND servi
 				}
 		}else{
 	
-	echo "order Added";
+//	echo "order Added";
 	
 		//--------------------- otherwise just insert the order and - Minus the Stock
 				$stock = stock_check($conn,$item,true);

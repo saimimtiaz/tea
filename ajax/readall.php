@@ -6,7 +6,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
     <style type='text/css'>
         .rating{
-        background-color: #8b0bed ;color: white;padding: 10px;
+        background-color: #0bc4ed;
+        color: white;
+        padding: 10px;
+        width: 210px;
+        position: fixed;
+        top: 0px;
+        right: 0px;
         
         }
         .yellow{
@@ -81,8 +87,29 @@ $green_tea_results = $conn->query($green_Tea_query);
 $organic_Tea_query = "SELECT id,date,item_id FROM tea_orders WHERE date = '$date' AND item_id = '1'  ORDER BY id DESC";
 $organic_tea_results = $conn->query($organic_Tea_query);
 
-//----------------------------------------------
+//---------------------------previous date-------------------
+//echo $date;
+//echo"<br>";
+$prevdate = date('d/m/Y', strtotime('-1 day', strtotime(date('d-m-Y'))));
+//echo $date;
+//die;
+
+//------------------skiping sunday
+
+//function isWeekend($date) {
+//    return (date('N', strtotime($date)) >= 6);
+//}
+//
+//if (isWeekend($date)){
+//echo "Weekend";
+//}
+//    
+//    die;
+
 //-----------------------Average Rating-----------------------
+
+
+
 $avg_query = "SELECT AVG(rating),date FROM tea_orders WHERE rating != 10 AND date = '$date' AND payment_type ='free' ";
 $ratings  = $conn->query($avg_query);
 //echo $avg_query;
@@ -92,29 +119,20 @@ $ratings  = $conn->query($avg_query);
 $row = $ratings->fetch_assoc(); 
 //     echo"<pre>";
 //     print_r($row);
-echo "<div class='rating'> Tea rating is <b> " . $row["AVG(rating)"]."
+echo "<div class='rating'> Tea rating of $date is <b> " . $row["AVG(rating)"]."
 </b></div>";
     
 
 
 
 
-//----------------------------------------------
+//----------------------Removing 0 From start of the Serving Time ------------------------
+$time = ltrim($time, '0'); 
 
-
-
-
-
-//echo $today;
-//echo"<br>";
-//echo  $rowcount = mysqli_num_rows($today_results);
 
 //-----------------------------------------Main page Query --------------------
 
-
-$s = "SELECT * FROM tea_orders WHERE date = '$date' AND serving_time = '$time' AND status ='1' ORDER BY id DESC";
-
-
+$s = "SELECT * FROM tea_orders WHERE date = '$date' AND serving_time = '$time' AND status ='$status' ORDER BY id DESC";
 
 //----------------------------------------------------------------------------------
 
@@ -192,21 +210,19 @@ echo '   <span style="background-color: #FFEB3B;color: #6d6b6b;padding: 10px;"> 
             
             $item = "<span style='background-color: #FFEB3B;color: #6d6b6b;padding: 10px;'>Organic Tea</span>";
              $item = "<img width='40' src='../$item_image_path'/><br>($product_name)";
-           
-            
-            
-            
             $data .= "<tr style='font-weight:900;font-size:20px'>
-                <td ><a href='readall.php?user=".$user."' type='button' class='btn btn-primary btn-lg'>$user <span class='badge'> $serving_time</span></a>
-          <br> <small><a href='whatsapp.php?user=".$user."'><img width='24px' src='../img/whatsapp.png'/></a></small>
-                </td>
+                <td >
+                <a href='readall.php?user=".$user."' type='button' class='btn btn-primary btn-lg'>$user <span class='badge'> $serving_time</span></a>
+          <br> 
+            </td>
                 <td>$sugar Spoons</td>
                 <td >$order_time</td>
-                <td><small>$item</small></td>
-                
+                <td><small>$item</small></td>  
                 <td>
                     <a href='del.php?id=$id&item=$item_id'class='btn btn-danger btn-xs'>Delete</a><br>
                     <small style='font-size:9px'>$id | $mac<br>$rat</small>
+                             <br> <small><a href='whatsapp.php?user=".$user."'><img width='24px' src='../img/whatsapp.png'/></a></small>
+                    
                 </td>
             </tr>";
             

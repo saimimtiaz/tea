@@ -673,7 +673,7 @@ else{ echo"<option value='11:00 AM' >11:00 AM</option> "; } ?>
       
     })
  //  overlay section
-    //document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('contextmenu', event => event.preventDefault());
 
         
     //-------------------Sugar prefrence 

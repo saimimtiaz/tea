@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Venture Drive Wifi Login</title>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />	
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link rel="stylesheet" href="login.css" media="screen">
+ 
+
+</head>
+<body class='login' style="zoom:1.1">
+$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="http://login.net/status" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+		document.sendin.submit();
+		return false;
+	    }
+	//-->
+	</script>
+$(endif)
+
+
+<form class="vertical-form" name="login" action="$(link-login-only)" method="post"
+	$(if chap-id) onSubmit="return doLogin()" $(endif)>
+<input type="hidden" name="dst" value="$(link-orig)" />
+<input type="hidden" name="popup" value="true" />
+<div style="margin:0;padding:0;display:inline"></div>
+<legend class="legend">
+
+<img class="logo" width="239px" src="white.png"/>
+    <p>User Login</p>
+</legend>
+
+<input autofocus name="username" type="text" value="$(username)" placeholder="User" size="30" />
+<input autocomplete="off" name="password" type="password" label="false" placeholder="Password" size="30" />
+<input type="submit" class="button" value=" " />
+	
+	<div style="width: 193px;margin: 0px auto; text-align:center;">	
+		<a style="font-size:10px;" class="button small rounded secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeo77EgtRsX7kZ4Hq_Dc96UCizu1nuK6PvNdwF7CgGxsCH8wA/viewform?usp=sf_link">Register</a> |
+
+		
+		<a style=";font-size:10px" href='https://search.google.com/local/writereview?placeid=ChIJWW0bBOMDGTkRh3kz0fZ15Ng'>Rate us on Google </a>
+		
+		| <small>$(mac)</small>
+		</div>
+	
+	
+<div class='footer'>
+<p>$(if trial == 'yes')Free trial available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)</p>
+<p>$(if error)<span style="color: #EEFF41; font-size: 16px">$(error)</span>$(endif)</p>
+<br>
+<p>
+</p>
+</div>
+</form>
+
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+<script type="text/javascript">
+document.oncontextmenu = function(){return false;}
+</script>
+
+</body>
+</html>

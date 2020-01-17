@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Venture Drive hotspot > status</title>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+	<link rel="stylesheet" href="foundation.min.css" media="screen">
+<style type="text/css">
+<!--
+textarea,input,select {
+	background-color: #FDFBFB;
+	border: 1px #BBBBBB solid;
+	padding: 2px;
+	margin: 1px;
+	font-size: 14px;
+	color: #808080;
+}
+
+.tabula{
+ 
+border-width: 1px; 
+border-collapse: collapse; 
+border-color: #c1c1c1; 
+background-color: transparent;
+font-family: verdana;
+font-size: 11px;
+}
+
+body{ color: #737373; font-size: 12px; font-family: verdana; }
+
+a, a:link, a:visited, a:active { color: #AAAAAA; text-decoration: none; font-size: 12px; }
+a:hover { border-bottom: 1px dotted #c1c1c1; color: #AAAAAA; }
+img {border: none;}
+td { font-size: 12px; padding: 4px;}
+
+-->
+</style>
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+</head>
+<body style="zoom:1.4" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+>
+	
+	
+	<a id="linkx"><img src="logo.png" width="200px" style="margin-left: 32px;margin-top: 26px;"><a></a>
+<!--	<div class='alert-box warning '><h2>Venture Drive</h2></div>-->
+	
+	$(if login-by-mac != 'yes')
+<br>
+<!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+<button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+<!-- end of user manager link -->
+
+<div style="margin-right:32px;margin-top: -76px;">
+	
+	<a style="float:right" class="button small alert"  href="http://login.net/logout?">Logout</a>
+	<a style="float:right" class="button small rounded secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeo77EgtRsX7kZ4Hq_Dc96UCizu1nuK6PvNdwF7CgGxsCH8wA/viewform?usp=sf_link">Register</a>
+	<div style="clear:both"></div>
+	
+	
+<a style="float:right;     background-color: #345466;color:white;   width: 139px;" class="button small rounded success"href="http://bookings.venturedrive.pk/Web/schedule.php">Meeting Room</a>	
+	
+	<div style="clear:both"></div>
+	
+	<div style="float:right;width:125px; margin:0px auto;text-aligh:center;">
+		<a href="https://api.whatsapp.com/send?phone=923330522220&text= Hello!"><img width="30" src='whatsapp.png'/></a>
+	
+	<a href="skype:live:92342a3e65ffd46c?chat"><img width="30" src='skype.png'/></a>
+	
+	<a href="https://join.skype.com/mFDRXSvrBpsI"><img width="30" src='groupchat.png'/></a>
+		<div style="clear:both"></div>
+	
+	<br>	
+	</div>
+	
+	
+</div>		
+	$(endif)
+	
+$(if login-by != 'mac')
+	<span style="display:none" id="mac">$(mac)</span>
+	<br><div style="text-align: center;"><h6>Welcome <span id="username">$(username)</span>!</h4></div><br>
+$(endif)
+	
+	 <div style="posotion:reletive;top:-15px;" class="grid-x grid-padding-x">
+  
+		 <div class="large-12 medium-12 ">
+	<table width="" height="">
+
+<tr>
+<td align="center" valign="middle">
+<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+
+	</div>
+		   <div class="large-12 medium-12">
+			 <iframe src=''  onload="iframeLoaded()"  id='x45d' frameborder='0' width="100%"  style="height:1200px;border:1px solid #f1f1f1;border-left:0px;">
+			   
+			   
+			   </iframe>
+			   
+		 </div>
+		 
+</div>
+	
+<div id="fb-root"></div>
+
+	
+	
+<script type="text/javascript">
+var mac = document.getElementById('mac');
+var name = document.getElementById('username');
+src = "http://vebvay.com/tea/tea.php?name="+name+"&mac="+mac; 
+document.addEventListener('contextmenu', event => event.preventDefault());
+var mac = document.getElementById('mac').innerHTML ;
+var name = document.getElementById('username').innerHTML;		
+src = "http://vebvay.com/tea/tea.php?name="+name+"&mac="+mac; 
+document.getElementById('x45d').src = src;
+	document.getElementById('linkx').href = src;
+	
+	</script>
+</body>
+</html>
