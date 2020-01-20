@@ -833,7 +833,7 @@ if(mac !='' && name!=''){
         });
 }else{
 $(".message").addClass('error');    
-$(".message").html("Mac Address or Your name is invalid");
+$(".message").html("Mac Address or Your name is invalid ("+name+")("+mac+")");
 $("html, body").animate({ scrollTop: 0 }, "slow");
 
 }
