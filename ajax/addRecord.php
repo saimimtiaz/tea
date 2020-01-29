@@ -83,6 +83,7 @@
 //-----------------if User have undelivered orders of previous date not today
 		//echo $date;
 		//echo"<br>";
+		
 		$s = "SELECT * FROM tea_orders WHERE mac = '$mac' AND status ='1' AND payment_type = 'free'";
 		$result = $conn->query(($s));
 		//echo"<pre>";
@@ -100,8 +101,10 @@
 		
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 		
-$s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND serving_time  ='$time' ";
-
+$s = "SELECT * FROM tea_orders WHERE mac = '$mac' AND DATE = '$date' AND payment_type = 'free' AND serving_time ='$time'";
+//echo $s;
+//echo "<br>";		
+		
 		require('stockcheck.php');
 		stock_check($conn,$item);
 		
@@ -109,6 +112,9 @@ $s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND servi
 		
 		$result = $conn->query(($s));
 		$last_order = $result->fetch_assoc();
+//		echo"<pre>";
+//		print_r($last_order);
+//		die;
 		
 		$type =  $last_order['payment_type'];
 		$last_order_serving_time =  $last_order['serving_time'];
@@ -121,7 +127,7 @@ $s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND servi
 		//--------------------------------------One order in one serving time (order alredy deliverd at that time)-----------------------------
 //		echo "$date == $last_order_date &&  $time == $last_order_serving_time && $payment_type =='free'";
 //		die;
-		if($result->num_rows > 0 && $payment_type =='free' && $status == 0)
+		if($result->num_rows > 0 && $payment_type == 'free' && $status == 0)
 		{
 		echo"<span class='error'> You already Delivered (<small>$id</small>)  <b>$last_order_serving_time<b> order.</span>";
 		die;
@@ -135,21 +141,19 @@ $s = "SELECT * FROM tea_orders WHERE User = '$name' AND Date = '$date' AND servi
 		
 		// If Free item order already exist them UPDATE that order instead of creating new order
 	
-			if( $result->num_rows > 0 && $payment_type =='free' && $status == 1) {
+			if( $result->num_rows > 0 && $payment_type == 'free' && $status == 1) {
 				
-				//$last_serving_time =  $last_order['serving_time'];
-				
-				
-				//echo "Last Serving $last_serving_time| current time $time"; echo"<pre>";
-					
-				$sql = "UPDATE tea_orders SET item_id='$item', sugar='$sugar'  WHERE date='$date' && serving_time = '$time' && user='$name' ";
-	
-	//echo $sql;
-				if($conn->query($sql) === TRUE) { 
-				echo"<span class='successs'>$last_order_serving_time Order updated successfully</span>";
-				}else{
-				echo "Error:  <br>" . $conn->error;
-				}
+				echo "$last_order_serving_time Order Already placed";
+
+//******************fault in the below code stock is not updating after updating the green tea into tea 					
+//				$sql = "UPDATE tea_orders SET item_id='$item', sugar='$sugar'  WHERE date='$date' && serving_time = '$time' && mac='$mac' && payment_type='free' ";
+//	
+//	//echo $sql;
+//				if($conn->query($sql) === TRUE) { 
+//				echo"<span class='successs'>$last_order_serving_time Order updated successfully</span>";
+//				}else{
+//				echo "Error:  <br>" . $conn->error;
+//				}
 		}else{
 	
 //	echo "order Added";
